@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #card {
+            width: 400px;
+        }
+        
+        #card-img img {
+            height: 300px;
+            width: 400px;
+        }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" /> -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <title>Twitter</title>
+</head>
+
+<body style="background-color: rgb(14, 14, 14); color: white;">
+    <nav>
+        <div class="nav-wrapper black">
+            <div class="container">
+                <a class="brand-logo"><span style="color: rgb(0, 195, 255);" class="twitter"
+              ><i class="fab fa-twitter"></i></span
+            >Twitter</a
+          >
+          <ul id="nav-mobile " class="right hide-on-med-and-down">
+            <!-- <li><a href="sass.html ">L</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %} {% endblock content %}
+
+    <!-- <script type="text/javascript " src="js/materialize.min.js "></script> -->
+    <script>
+        setTimeout(function() {
+            $(".wavy ").fadeToggle();
+        }, 1500);
+        $(document).ready(function() {
+            $(".tabs ").tabs();
+        });
+        $(".dropdown-trigger").dropdown();
+        $(document).ready(function() {
+            $(".materialboxed ").materialbox();
+        });
+        $(document).ready(function() {
+            $(".parallax ").parallax();
+        });
+        $(document).ready(function() {
+            $(".sidenav ").sidenav();
+        });
+        $(document).ready(function() {
+            $(".materialboxed ").materialbox();
+        });
+        $(document).ready(function() {
+            $(".carousel ").carousel();
+            $(".carousel.carousel-slider ").carousel({
+                fullWidth: true,
+            });
+        });
+        $(document).ready(function() {
+            $(".fixed-action-btn ").floatingActionButton();
+        });
+    </script>
+</body>
+
+</html>

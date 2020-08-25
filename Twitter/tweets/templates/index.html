@@ -1,0 +1,178 @@
+{% extends 'base.html' %} {% block content %}
+
+<div>
+    <h4 style="margin-bottom: 40px;" class="center-align" id="h4-center">Tweets</h4>
+</div>
+
+<div style="color: white;" id="search-bar" class="nav-wrapper">
+    <form action="/search" method="GET">
+        <div class="input-field">
+            <input style="background-color: #111;" name="query" id="query" placeholder="Search Tweets..." type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+
+        </div>
+        <!-- <button class="btn waves-effect waves-light right blue"></button> -->
+    </form>
+</div>
+
+<a id="thing" class="nav-wrapper" style="color:aliceblue;" href="/profile/">
+    <div class="user-container">
+        <h4 class="center-align scrollspy">{{current.username}}</h4>
+        <h6 class="center-align"><img id="profile-img" class="circle responsive-img" src="{{current.profile.image.url}}" alt="" /></h6>
+        <h6 class="center-align">Following : {{request.user.followers.count}}</h6>
+
+        <h6 class="center-align">Followers : {{followers2.count}}</h6>
+    </div>
+</a>
+
+<div class="follower-container">
+    <h4 class="center-align scrollspy">Your Followers</h4>
+    <ul style="color: black;" class="collection">
+        {% for people in followers %}{% if request.user != people%}
+
+
+        <li style="padding-bottom: 30px;" class="collection-item avatar">
+
+            <div><span id="profile-home-img"><img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle"></span>
+                <h6 style="padding-top: 15px;">{{people.username}}</h6>
+                <!-- <form action="/followhome/{{people.id}}" method="POST">
+                    {% csrf_token %}
+                    <button style="margin-top: 20px;" id="follower-btn" type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right blue">
+                            Follow
+                        </button>
+                </form> -->
+            </div>
+        </li>
+        {% else %}
+        <p></p>
+
+        {% endif %} {% endfor %}
+        <p></p>
+        <span style="display: flex;">
+        <a style="margin-left: 100px;" class="" href="/follower_list/">View More <i class="fas fa-long-arrow-alt-right"></i></a>
+        </span>
+    </ul>
+
+
+
+    <!-- <a href=""><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt=""></a> -->
+
+
+
+</div>
+
+
+<div>
+    {% for tweet in tweets %}
+
+
+
+
+    <div class="row">
+        <div id="column-center" class="col s12">
+            <div id="card" class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img id="spanner-big" class="activator" src="{{tweet.image_url}}" />
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">
+            {{tweet.title}}
+
+            <!-- <i class="material-icons right"> more_vert</i> -->
+          </span>
+                    <!-- <form action="{% url 'dislike_post' tweet.pk %}" method="post">
+                        {% csrf_token %}
+
+                        <div style="color: black;" class="heart-container">
+                            {{tweet.disliked.all.count}}
+                        </div>
+                        <button type="submit" name="post_id2" value="{{tweet.id}}" id="heart" class="btn-floating btn-large waves-effect waves-light right red lighten-1">
+              <i class="fas fa-thumbs-down"></i>
+            </button>
+                    </form>
+
+                    <div class="right">
+                        <h6>....</h6>
+                    </div>
+                    <form action="{% url 'like_post' tweet.pk %}" method="POST">
+                        {% csrf_token %}
+                        <div style="color: black;" class="like-container">
+                            {{tweet.liked.all.count}}
+                        </div>
+                        <button type="submit" name="post_id" value="{{tweet.id}}" id="like" class="btn-floating btn-large waves-effect waves-light right blue">
+              <i class="material-icons"><i class="fas fa-thumbs-up"></i></i>
+            </button>
+                    </form> -->
+                    <p style="padding-bottom: 10px;" class="grey-text">{{tweet.time}}</p>
+                    <p class="grey-text">By: <span class="grey-text">{{tweet.user}}</span> <span class="white-text">....</span> </span><span><a id="halhalo" style="margin-left: 10px;" class="btn right-align blue" href="/tweet_detail/{{tweet.id}}">View More  </a></span>
+
+                        <span style="color: white;">............................ </span> {% if request.user == tweet.user %}
+                        <span>
+                        <a style="color: red;" href="/delete_tweet/{{tweet.id}}"><i style="padding-left: 20px; font-size: 20px;" class="fas fa-trash"></i></a>
+                        <a href="/update_tweet/{{tweet.id}}"><i style="padding-left: 20px; font-size: 20px;" class="fas fa-edit"></i></a>
+                        </span> {% endif %}
+                        <!-- <a style="color: black;" class='dropdown-trigger' data-target='dropdown1'><i style="font-size: 20px;" class="fas fa-ellipsis-v"></i></a> 
+                        <!-- Dropdown Structure -->
+                        <!-- <ul id='dropdown1' class='dropdown-content'>
+                            <li><a style="color: red;" href="/delete_tweet/{{tweet.id}}"><i style="padding-left: 20px;" class="fas fa-trash"></i></a></li>
+                            <li><a href="/update_tweet/{{tweet.id}}"><i style="padding-left: 20px;" class="fas fa-edit"></i></a></li>
+                        </ul> -->
+                    </p>
+
+
+                </div>
+                <div style="z-index: 20;" class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+            {{tweet.title}}<i class="material-icons right"> close</i>
+          </span>
+                    <p class="black-text">
+                        {{tweet.content}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />{% endfor %}
+
+</div>
+<ul style="margin-top: 50px;" class="pagination center">
+
+    <li class="waves-effect" style="cursor: default;"><i class="material-icons">chevron_left</i>
+    </li>
+    {% for i in paginator.page_range %}
+    <!-- {% if posts.number == p %} -->
+    <li class="{% if i == page_number %}active blue{% endif %}"><a class="white-text" href="?page={{ i }}">{{i}}</a></li>
+    <!-- {% else %} -->
+    <!-- <li><a href="?page={{p}}">{{p}}</a></li> -->
+    <!-- {% endif %} -->{% endfor %}
+    <li class="waves-effect" style="cursor: default;"><i class="material-icons">chevron_right</i></a>
+    </li>
+</ul>
+
+<div class="bottom-nav">
+    <nav id="hover1-container" style=" transition: ease-in;" class="black">
+        <a id="hover1" href="/search_page"><i class="fas fa-search"></i></a>
+    </nav>
+</div>
+
+<div style="z-index: 10000;" class="fixed-action-btn">
+    <!-- <a class="btn-floating btn-large red pulse">
+        <i class="large material-icons">add</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul> -->
+    <a id="action" href="/createtweets" class="btn-floating btn-large pulse tooltipped waves-effect waves-light blue" data-position="top" data-tooltip="Create Tweet"><i class="fas fa-pen"></i></a
+  >
+
+  {% endblock content %}
+</div>
+
+
+<!-- <script type="text/javascript">
+document.getElementById("search").value = "{{query}}"
+</script> -->

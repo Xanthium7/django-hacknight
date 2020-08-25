@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<h4 style="margin-bottom: 30px;" class="center-align scrollspy">Your Followers</h4>
+<h4 class="center-align"><a href="/profile/" class="btn red waves-effect">Back</a></h4>
+<div class="container">
+    <ul style="color: black; border: none;" class="collection">
+        {% for people in followers %}{% if request.user != people%}
+
+
+        <li style="border-radius: 30px; margin-bottom: 20px;" class="collection-item avatar">
+
+            <div><span id="profile-home-img"><img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle"></span>
+                <h6 style="padding-top: 15px;">{{people.username}}</h6>
+                <!-- <form action="/followhome/{{people.id}}" method="POST">
+                    {% csrf_token %}
+                    <button style="margin-top: 20px;" id="follower-btn" type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right blue">
+                            Follow
+                        </button>
+                </form> -->
+            </div>
+        </li>
+        {% else %}
+        <p></p>
+
+        {% endif %} {% endfor %}
+        <p></p>
+    </ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div style="color: white;" id="search-page-saerch-bar">
+    <form action="/search" method="GET">
+        <div class="input-field">
+            <input style="background-color: #111;" name="query" id="query" placeholder="Search Tweets..." type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+
+        </div>
+        <!-- <button class="btn waves-effect waves-light right blue"></button> -->
+    </form>
+</div>
+{% endblock content %}

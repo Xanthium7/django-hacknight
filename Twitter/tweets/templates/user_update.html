@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+<h2 style="margin-top: 50px;" class="center-align">Fill the form to edit</h2>
+<div id="u_form_padder" class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{u_form.as_p}}
+        <button class="btn waves-effect waves-light" type="submit" name="Submit">Change</button>
+    </form>
+</div>
+{% endblock content %}

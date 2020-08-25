@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block content %}
+<div class="yayayaya">
+    <h2 style="margin-bottom: 20px;" class="center-align">{{tweet.title}}</h2>
+    <div class="tweet-detail-img">
+        <img class="materialboxed " style="border: 3px solid black;" src="{{tweet.image_url}}" alt="" srcset="">
+    </div>
+    <div class="tweet-detail-text">
+        <p>
+            {{tweet.content}}
+        </p>
+    </div>
+    <div class="like-unlike">
+        <form action="{% url 'dislike_post' tweet.pk %}" method="post">
+            {% csrf_token %}
+
+            <div style="border:1px solid rgb(184, 18, 59);" class="detail-heart-container">
+                {{tweet.disliked.all.count}}
+            </div>
+            <button type="submit" name="post_id2" value="{{tweet.id}}" id="detail-heart-btn" class="btn-floating btn-large waves-effect waves-light right red lighten-1">
+              <i class="fas fa-thumbs-down"></i>
+            </button>
+        </form>
+
+        <!-- <div class="right">
+        <h6>....</h6>
+    </div> -->
+        <form action="{% url 'like_post' tweet.pk %}" method="POST">
+            {% csrf_token %}
+            <div style="border: 1px solid rgb(13, 165, 236);" class="detail-like-container">
+                {{tweet.liked.all.count}}
+            </div>
+            <button type="submit" name="post_id" value="{{tweet.id}}" id="detail-like-btn" class="btn-floating btn-large waves-effect waves-light right blue">
+              <i class="material-icons"><i class="fas fa-thumbs-up"></i></i>
+            </button>
+        </form>
+    </div>
+
+
+    <h2 class="center-align comments-title">
+        Comments
+    </h2>
+    <div class="comment">
+        <form id="comment-form" action="/create_comment/{{tweet.id}}" method="post">
+            {% csrf_token %}
+            <div class="input-field" id="comment-input">
+                <input required type="text" id="title" name="comment_content" type="text" maxlength="1000" class="validate">
+
+                <label for="last_name">Add a Public comment</label>
+            </div>
+            <button id="comment-submit" class="btn waves-effect waves-light blue" type="submit" name="Submit">Add<i class="material-icons right">send</i></button>
+        </form>
+
+        <div class="container">
+            <ul style="border: none;" class="collection">
+
+
+                {% for comment in comments %} {% if tweet == comment.post %}
+                <li style="color: black;" class="collection-item avatar comments-container">
+                    <img src="{{comment.user.profile.image.url}}" alt="" class="circle">
+                    <h6>{{comment.content}}<br>
+
+                    </h6>
+                    <p class="grey-text">By: {{comment.user}} </p>
+                    <p class="grey-text">At: {{comment.time}}</p>
+                    <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                </li>
+                <br> {% else %}
+                <p></p>
+                {% endif %}{% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</div>{% endblock content %}

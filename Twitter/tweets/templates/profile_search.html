@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<h2 class="center-align">{{query}} </h2>
+<div class="container">
+    {% for people in allPosts %}
+
+    <ul style="color: black; border: none;" class="collection">
+        <li class="collection-item avatar something">
+            <img src="{{people.profile.image.url}}" alt="" class="circle">
+            <span class="title">{{people.username}}</span>
+            <!-- <a href="#!" class="secondary-content"></a> -->
+            <form action="/follow/{{people.id}}" method="POST">
+                {% csrf_token %} {% if request.user in people.profile.followers.all %}
+
+
+
+                <button type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right red">
+                            UnFollow
+                        </button> {% else %}
+                <button type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right blue">
+                            Follow
+                        </button> {% endif %}
+            </form>
+        </li>
+    </ul>
+    {% endfor %} {% endblock content %}
+
+</div>

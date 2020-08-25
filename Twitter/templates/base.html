@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" /> -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %} {% endblock %}
+    <style>
+        #card {
+            width: 400px;
+            box-shadow: 18px 16px 10px 0px rgb(7, 7, 7);
+            border-radius: 50px;
+            border: 1px solid rgb(17, 160, 204);
+        }
+        
+        #card-img img {
+            height: 300px;
+            width: 400px;
+        }
+        
+        .card .card-image {
+            border-radius: 50px;
+        }
+        
+        body {
+            background-color: rgb(28, 28, 28);
+            color: white;
+        }
+        
+        form input {
+            color: white;
+        }
+        
+        #hover :hover {
+            background-color: rgb(78, 174, 253);
+            color: black;
+        }
+        
+        #hover1:hover {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-right: 20px;
+            background-color: rgb(78, 174, 253);
+        }
+        
+        #hover1 {
+            transition: 0.2s ease;
+        }
+        
+        #hover1 i {
+            height: 30px;
+            transition: ease-in;
+            margin-top: 20px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        #hover1-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        #blue-text {
+            color: rgb(11, 168, 230);
+        }
+        
+        #red-text {
+            color: rgb(255, 51, 0);
+        }
+        
+        #green-text {
+            color: rgb(6, 211, 6);
+        }
+        
+        #message {
+            margin-top: 15px;
+            background-color: rgb(114, 114, 114);
+            box-shadow: 17px 15px 8px 0px #111;
+            padding-left: 20px;
+            border-radius: 8px;
+            z-index: 10000;
+        }
+        
+        #h4-center {
+            display: flex;
+            justify-content: center;
+        }
+        
+        #column-center {
+            display: flex;
+            justify-content: center;
+        }
+        
+        hr {
+            margin-left: 500px;
+            margin-right: 500px;
+        }
+        
+        #other-user {
+            margin-bottom: 50px;
+            margin-top: 50px;
+            padding-left: 50px;
+        }
+        
+        #about-text {
+            position: absolute;
+            left: 500px;
+            top: 250px;
+            width: 600px;
+        }
+        
+        .like-container {
+            background-color: rgb(255, 255, 255);
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            position: absolute;
+            left: 245px;
+            z-index: 10;
+            border: 1px solid rgb(40, 152, 218);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        i {
+            display: flex;
+            align-items: center;
+        }
+        
+        #profile-img {
+            width: 200px;
+            height: 200px;
+        }
+        
+        #about-img {
+            border: 1px solid blue;
+            border-radius: 50px;
+            background-color: black;
+        }
+        
+        .heart-container {
+            background-color: rgb(255, 255, 255);
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            position: absolute;
+            left: 315px;
+            z-index: 10;
+            border: 1px solid rgb(236, 76, 76);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #profile-image {
+            height: 100px;
+            width: 100px;
+        }
+        
+        #img-btn {
+            display: inline-block;
+            position: relative;
+            top: -10px;
+            left: -60px;
+        }
+        
+        #p_form_padder {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #p_form_padder form {
+            border: 1px solid rgb(173, 170, 170);
+            padding: 30px 30px 30px 30px;
+        }
+        
+        #u_form_padder form {
+            border: 1px solid rgb(173, 170, 170);
+            padding: 30px 30px 30px 30px;
+            margin-top: 80px;
+        }
+        
+        .user-container {
+            background-color: rgb(5, 5, 5);
+            position: absolute;
+            width: 320px;
+            margin-left: 35px;
+            border-radius: 50px;
+            padding-bottom: 10px;
+            border: 1px solid rgb(10, 163, 209);
+            box-shadow: 17px 15px 8px 0px rgb(5, 5, 5);
+            position: fixed;
+        }
+        
+        .follower-container {
+            background-color: rgb(5, 5, 5);
+            position: absolute;
+            width: 320px;
+            margin-left: 915px;
+            border-radius: 50px;
+            padding-bottom: 10px;
+            border: 1px solid rgb(10, 163, 209);
+            box-shadow: 17px 15px 8px 0px rgb(5, 5, 5);
+            margin-top: 55px;
+        }
+        
+        .follower-container ul {
+            margin-left: 20px;
+            margin-right: 20px;
+            border: none;
+        }
+        
+        .follower-container li {
+            margin-bottom: 10px;
+            border-radius: 30px;
+            border: 1px solid rgb(0, 162, 255);
+        }
+        
+        #search-bar {
+            background-color: #111;
+            width: 350px;
+            border-radius: 60px;
+            position: absolute;
+            left: 900px;
+            top: 80px;
+            box-shadow: 7px 8px 8px 0px rgb(5, 5, 5);
+            margin-top: 65px;
+        }
+        
+        #profile-home-img {}
+        
+        #list-img {
+            height: 50px;
+            width: 50px;
+        }
+        
+        .middle {
+            font-style: none;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .btnv {
+            display: inline-block;
+            width: 90px;
+            height: 90px;
+            background-color: #f1f1f1;
+            margin: 10px;
+            border-radius: 30%;
+            box-shadow: 0 5px 15px -5px #00000070;
+            color: #3498db;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .btnv i {
+            line-height: 90px;
+            font-size: 26px;
+            transition: 0.2s linear;
+        }
+        
+        .btnv:hover i {
+            transform: scale(1.3);
+            color: #f1f1f1;
+            /* box-shadow: 0 5px 15px -5px #00000070; */
+        }
+        
+        .btnv::before {
+            content: "";
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            background: #3498db;
+            transform: rotate(45deg);
+            left: -110%;
+            top: 90%;
+        }
+        
+        .btnv:hover::before {
+            animation: aaa 0.7s 1;
+            top: -10%;
+            left: -10%;
+        }
+        
+        @keyframes aaa {
+            0% {
+                left: -110%;
+                top: 90%;
+            }
+            50% {
+                left: 10%;
+                top: -30%;
+            }
+            100% {
+                top: -10%;
+                left: -10%;
+            }
+        }
+        
+        #search-bar input {
+            color: white;
+        }
+        
+        #search {
+            background-color: #111;
+            border: 60px;
+            width: 200px;
+            margin-left: 45px;
+        }
+        
+        #card-obj {
+            background-color: rgb(10, 10, 10);
+            border: 1px solid rgb(15, 170, 197);
+            box-shadow: 17px 15px 8px 0px rgb(5, 5, 5);
+        }
+        
+        #follower-btn {
+            position: relative;
+            bottom: 20px;
+        }
+        
+        #search-user {
+            height: 50px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            position: relative;
+            left: 230px;
+        }
+        
+        #search-user input {
+            border-radius: 50px;
+            height: 40px;
+            width: 200px;
+            position: relative;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        #search-user label i {
+            position: relative;
+            top: 10px;
+        }
+        
+        .bottom-nav {
+            position: absolute;
+            width: 700px;
+            top: 553px;
+            z-index: 1000;
+            position: static;
+            display: none;
+            position: fixed;
+            padding-bottom: 30px;
+        }
+        
+        #search-page-saerch-bar {
+            padding-left: 50px;
+            padding-right: 50px;
+            margin-right: 50px;
+            border-radius: 50px;
+        }
+        
+        #search-page-saerch-bar input {
+            border-radius: 50px;
+            padding-left: 50px;
+            color: white;
+        }
+        
+        #search-page-saerch-bar i {
+            margin-top: 10px;
+        }
+        
+        #hover2 {
+            color: rgb(0, 89, 255);
+        }
+        
+        #hover2:hover {
+            background-color: rgb(0, 140, 255);
+            color: black;
+        }
+        
+        body {
+            scroll-behavior: smooth;
+        }
+        
+        .tweet-detail-img {
+            margin-left: 60px;
+        }
+        
+        .tweet-detail-img img {
+            height: 450px;
+            width: 500px;
+            border-radius: 30px;
+            box-shadow: 17px 15px 8px 0px rgb(5, 5, 5);
+        }
+        
+        .tweet-detail-text {
+            height: 500px;
+            width: 630px;
+            position: absolute;
+            top: 200px;
+            left: 630px;
+            margin-right: 30px;
+            text-align: left;
+        }
+        
+        .detail-heart-container,
+        .detail-like-container {
+            background-color: aliceblue;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #detail-like-btn {
+            position: absolute;
+            right: 600px;
+            bottom: 0px;
+        }
+        
+        #detail-heart-btn {
+            position: absolute;
+            right: 520px;
+            bottom: 0px;
+        }
+        
+        .detail-heart-container {
+            position: absolute;
+            right: 520px;
+            bottom: 0px;
+            z-index: 100;
+            margin-bottom: 40px;
+        }
+        
+        .detail-like-container {
+            position: absolute;
+            right: 600px;
+            bottom: 0px;
+            z-index: 100;
+            margin-bottom: 40px;
+        }
+        
+        .comments-container {
+            border-radius: 50px;
+            border: 1px solid rgb(0, 174, 255);
+            margin-bottom: 10px;
+        }
+        
+        #comment-input {
+            padding-left: 300px;
+            padding-right: 300px;
+        }
+        
+        #comment-input label {
+            margin-left: 310px;
+        }
+        
+        #comment-submit {
+            margin-left: 300px;
+            margin-bottom: 20px;
+        }
+        
+        #halhalo {
+            margin-top: 10px;
+            position: relative;
+            left: 30px;
+            bottom: 10px;
+        }
+        
+        .comments-container img {
+            margin-top: 20px;
+        }
+        
+        #border-animtion :hover {
+            border-bottom: 1px solid white;
+        }
+        
+        .wavy {
+            height: 100vh;
+            position: relative;
+            -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+        }
+        
+        .wavy span {
+            position: relative;
+            color: white;
+            display: inline-block;
+            text-transform: capitalize;
+            animation: animate 1s ease-in-out infinite;
+            animation-delay: calc(0.1s*var(--i));
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(-20px);
+            }
+            40%,
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .user-container {
+                display: none;
+            }
+            body {
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+            }
+            #thing {
+                display: none;
+            }
+            .bottom-nav {
+                display: block;
+            }
+            #profile-title {
+                font-size: 40px;
+            }
+            #search-user {
+                position: relative;
+                left: 50px;
+            }
+            .pagination {
+                margin-bottom: 80px;
+            }
+            .tweet-detail-img {
+                margin-top: 20px;
+                margin-left: 30px;
+            }
+            .tweet-detail-img img {
+                height: 350px;
+                width: 400px;
+                margin-left: 00px;
+            }
+            .tweet-detail-text {
+                position: absolute;
+                left: 30px;
+                width: 400px;
+                text-align: center;
+                top: 600px;
+            }
+            #search-bar {
+                display: none;
+            }
+            .follower-container {
+                display: none;
+            }
+            .something {
+                border-radius: 50px;
+                background-color: grey;
+            }
+            #ultag {
+                background-color: red;
+                z-index: 1000000;
+            }
+            #detail-like-btn {
+                position: absolute;
+                left: 170px;
+                top: 1000px;
+                bottom: 0px;
+                margin-top: 10px;
+            }
+            #detail-heart-btn {
+                position: absolute;
+                left: 250px;
+                top: 1000px;
+                bottom: 0px;
+                margin-top: 10px;
+            }
+            .detail-heart-container {
+                position: absolute;
+                left: 250px;
+                top: 1000px;
+                bottom: 0px;
+            }
+            .detail-like-container {
+                position: absolute;
+                left: 166px;
+                top: 1000px;
+                bottom: 0px;
+            }
+            .comments-title {
+                position: relative;
+                top: 530px;
+                padding-bottom: 40px;
+            }
+            .comment {
+                position: relative;
+                top: 500px;
+            }
+            #about-img {
+                margin-left: 60px;
+            }
+            #about-text {
+                left: 10px;
+                width: 400px;
+                text-align: center;
+                position: relative;
+                top: 10px;
+            }
+            #droup-down {
+                position: absolute;
+                left: -110px;
+                padding-right: 200px;
+                position: relative;
+            }
+            #title {
+                width: 400px;
+            }
+            #comment-form {
+                position: relative;
+                right: 250px;
+            }
+            .yayayaya {
+                overflow-x: visible;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div style="height: 200vh; width: 200vh; font-size: 16px;" class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div> -->
+    <!-- <div style="height: 100vh; z-index: 100000;" class="wavy">
+        <span style="--i:1;">L</span>
+        <span style="--i:2;">o</span>
+        <span style="--i:3;">a</span>
+        <span style="--i:4;">d</span>
+        <span style="--i:5;">i</span>
+        <span style="--i:6;">n</span>
+        <span style="--i:7;">g</span>
+        <span style="--i:8;">.</span>
+        <span style="--i:9;">.</span>
+        <span style="--i:10;">.</span>
+    </div> -->
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper black">
+                <div style="padding-left: 50px;">
+                    <a href="/" class="brand-logo"><span style="color: rgb(0, 195, 255);" class="twitter"><i
+                                class="fab fa-twitter"></i></span>Twitter</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                    <ul class="right hide-on-med-and-down">
+                        <li id="hover">
+                            <a id="blue-text" href="/"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li id="hover">
+                            <a id="red-text" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Sign
+                                Out</a>
+                        </li>
+                        <li id="hover">
+                            <a href="{% url 'account_email' %}"><i class="fas fa-exchange-alt"></i> Change E-mail</a>
+                        </li>
+
+                        {% else %}
+                        <li id="hover">
+                            <a href="{% url 'account_login' %}"> Login</a>
+                        </li>
+                        <li id="hover">
+                            <a id="green-text" href="{% url 'account_signup' %}"> Sign
+                                Up</a>
+                        </li>
+                        {% endif %}
+
+                        <li id="hover">
+                            <a href="{% url 'profile' %}"> Profile</a>
+                        </li>
+                        <li id="hover2">
+                            <a href="/about"> About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <ul style="z-index: 1000000000;" class="sidenav" id="mobile-demo">
+        <li>
+            <a id="blue-text" href="/"><i class="fas fa-home"></i> Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+            <a id="red-text" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </li>
+        <li>
+            <a href="{% url 'account_email' %}"><i class="fas fa-exchange-alt"></i> Change E-mail</a>
+        </li>
+
+        {% else %}
+        <li>
+            <a href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+        <li>
+            <a id="green-text" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i> Sign Up</a>
+        </li>
+        {% endif %}
+
+        <li>
+            <a href="{% url 'profile' %}"><i class="fas fa-user"></i> Profile</a>
+        </li>
+        <li>
+            <a href="/about"><i class="fab fa-twitter"></i> About Us</a>
+        </li>
+    </ul>
+    {% block body %} {% if messages %}
+    <div id="message" class="container">
+        <strong>Messages:</strong>
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div>
+        <ul></ul>
+    </div>
+    {% block content %} {% endblock %} {% endblock %} {% block extra_body %} {% endblock %}
+
+    <script>
+        setTimeout(function() {
+            $(".wavy ").fadeToggle();
+        }, 1500);
+        $(document).ready(function() {
+            $(".tabs ").tabs();
+        });
+        $(".dropdown-trigger").dropdown();
+        $(document).ready(function() {
+            $(".materialboxed ").materialbox();
+        });
+        $(document).ready(function() {
+            $(".parallax ").parallax();
+        });
+        $(document).ready(function() {
+            $(".sidenav ").sidenav();
+        });
+        $(document).ready(function() {
+            $(".materialboxed ").materialbox();
+        });
+        $(document).ready(function() {
+            $(".sidenav").sidenav();
+        });
+        $('.dropdown-trigger').dropdown();
+        $(document).ready(function() {
+            $('.slider').slider();
+        });
+        $(document).ready(function() {
+            M.updateTextFields();
+        });
+
+        $(document).ready(function() {
+            $(".tap-target").tapTarget();
+        });
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+        });
+        $(document).ready(function() {
+            $('.tooltipped').tooltip();
+        });
+        $(document).ready(function() {
+            $("input.autocomplete").autocomplete({
+                data: {
+                    Apple: null,
+                    Microsoft: null,
+                    Google: "https://placehold.it/250x250",
+                },
+            });
+        });
+        $(document).ready(function() {
+            $(".carousel ").carousel();
+            $(".carousel.carousel-slider ").carousel({
+                fullWidth: true,
+            });
+        });
+        $(document).ready(function() {
+            $(".fixed-action-btn ").floatingActionButton();
+        });
+    </script>
+    <!-- <script>
+        let likeContainer = document.querySelectorAll(".like-container");
+        let likeButton = document.querySelectorAll("#like");
+        let likeButton2 = document.getElementById("like");
+        let x = [];
+        for (i = 0; i < likeButton.length; ++i) {
+            likeButton[i].addEventListener("click", function() {
+                x.push("hello");
+                console.log(x.length);
+                localStorage.setItem("likes", x.length);
+                likeContainer[0].innerHTML = localStorage.getItem("likes");
+            });
+        }
+        console.log(likeButton);
+    </script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+
+<div style="padding-bottom: 50px;">
+    <h2 class="center-align">Update Tweet</h2>
+</div>
+<div class="container">
+    <form style="padding-bottom: 50px;" action="" method="POST">
+        {% csrf_token %} {{form}}
+        <button class="btn waves-effect waves-light blue" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock content %}

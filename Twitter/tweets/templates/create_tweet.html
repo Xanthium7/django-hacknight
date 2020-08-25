@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+
+
+<h2 class="center-align">Create Your Tweet here</h2>
+
+<div class="container">
+    <form style="color: white;" method="POST" action="">
+        <!-- <table> -->
+        {% csrf_token %}
+        <!-- <input type="text" name="title" placeholder="Title"> -->
+        <div class="input-field">
+            <input required id="title" name="title" type="text" class="validate" maxlength="50">
+            <label for="last_name">Title</label>
+        </div>
+        <div class="input-field">
+            <input required type="text" id="title" name="content" type="text" maxlength="1000" class="validate">
+
+            <label for="last_name">Content</label>
+        </div>
+        <div class="input-field">
+            <input required type="text" id="title" name="image_url" class="validate" maxlength="2883">
+            <label for="last_name">Image Link</label>
+        </div>
+        <!-- <input type="text" name="content" placeholder="Content"> -->
+        <!-- <input type="text" name="image_url" placeholder="Image link"> -->
+        <div style="margin-bottom: 10px;">please provide a real image link ^</div>
+        <button class="btn waves-effect waves-light blue" type="submit" name="Submit">Submit<i class="material-icons right">send</i></button>
+        <!-- </table> -->
+    </form>
+</div>
+
+{% endblock content %}

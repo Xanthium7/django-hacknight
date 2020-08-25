@@ -1,0 +1,109 @@
+{% extends 'base.html' %} {% block content %}
+
+<div>
+    <h4 style="margin-bottom: 40px;" class="center-align" id="h4-center">Search Results: </h4>
+</div>
+
+<!-- <div id="search-bar" class="nav-wrapper">
+    <form action="/search" method="GET">
+        <div class="input-field">
+            <input style="background-color: #111;" name="query" id="search" placeholder="Search..." type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+
+        </div>
+        <!-- <button class="btn waves-effect waves-light right blue"></button> -->
+<!-- </form> -->
+<!-- </div> -->
+<!-- 
+<a class="nav-wrapper" style="color:aliceblue;" href="/profile/">
+    <div class="user-container">
+        <h4 class="center-align scrollspy">{{current.username}}</h4>
+        <h6 class="center-align"><img id="profile-img" class="circle responsive-img" src="{{current.profile.image.url}}" alt="" /></h6>
+        <h6 class="center-align">Following : {{request.user.followers.count}}</h6>
+
+        <h6 class="center-align">Followers : {{followers.count}}</h6>
+    </div>
+</a> -->
+
+<div>
+    {% if allPosts|length < 1 %}
+    <h5 class="center-align">No Search Results</h5>
+    <h5 class="center-align">Your Search: <b>"{{query}}"</b></h5>
+    <h5 class="center-align">Did not match any results</h5>
+    {% endif %} 
+    <h3 class="center-align"><a href="/" class="btn red center-align">Back</a></h3>
+    {% for tweet in allPosts %}
+        <div class="row">
+            <div id="column-center" class="col s12">
+            
+                <div id="card" class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img id="spanner-big" class="activator" src="{{tweet.image_url}}" />
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                        {{tweet.title}}
+
+                        <i class="material-icons right"> more_vert</i>
+                    </span>
+                        <!-- <form action="{% url 'dislike_post' tweet.pk %}" method="post">
+                            {% csrf_token %}
+
+                            <div style="color: black;" class="heart-container">
+                                {{tweet.disliked.all.count}}
+                            </div>
+                            <button type="submit" name="post_id2" value="{{tweet.id}}" id="heart" class="btn-floating btn-large waves-effect waves-light right red lighten-1">
+                            <i class="fas fa-thumbs-down"></i>
+                        </button>
+                        </form>
+
+                        <div class="right">
+                            <h6>....</h6>
+                        </div>
+                        <form action="{% url 'like_post' tweet.pk %}" method="POST">
+                            {% csrf_token %}
+                            <div style="color: black;" class="like-container">
+                                {{tweet.liked.all.count}}
+                            </div>
+                            <button type="submit" name="post_id" value="{{tweet.id}}" id="like" class="btn-floating btn-large waves-effect waves-light right blue">
+                            <i class="material-icons"><i class="fas fa-thumbs-up"></i></i>
+                        </button>
+                        </form> -->
+                        <p style="padding-bottom: 10px;" class="grey-text">{{tweet.time}}</p>
+                        <p class="grey-text">By: <span class="grey-text">{{tweet.user}}</span> <span class="white-text">....</span> </span><span><a id="halhalo" style="margin-left: 20px;" class="btn right-align blue" href="/tweet_detail/{{tweet.id}}">View More</a></span>
+                    </p>
+                    </div>
+                    <div style="z-index: 20;" class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">
+                        {{tweet.title}}<i class="material-icons right"> close</i>
+                    </span>
+                        <p class="black-text">
+                            {{tweet.content}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr /> {% endfor %}
+        <a class="" style="scroll-behavior: smooth;" href="#h4-center"><h5 class="center-align">Go Back Up</h5></a>
+</div>
+
+
+
+<div class="fixed-action-btn">
+    <!-- <a class="btn-floating btn-large red pulse">
+        <i class="large material-icons">add</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul> -->
+    <a href="/createtweets" class="btn-floating btn-large pulse waves-effect waves-light blue"><i
+            class="fas fa-pen"></i>/a
+        >
+
+        {% endblock content %}
+</div>
