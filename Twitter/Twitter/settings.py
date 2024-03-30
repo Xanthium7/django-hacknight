@@ -66,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
 ]
 
 ROOT_URLCONF = 'Twitter.urls'
@@ -154,11 +155,11 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "akshhaykmurali@gmail.com"
-EMAIL_HOST_PASSWORD = os.environ["EMAIL_PASS"]
+# EMAIL_HOST_PASSWORD = os.environ["EMAIL_PASS"]
+EMAIL_HOST_PASSWORD = "421d7eba"
 # print(EMAIL_HOST_PASSWORD)
 
 
-
 # SOCIAL_AUTH_FACEBOOK_KEY = '340286416960937'  # App ID
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ["FACEBOOK_KEY"]
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ["FACEBOOK_PASS"]  # App Secret
+# SOCIAL_AUTH_FACEBOOK_KEY = os.environ["FACEBOOK_KEY"]
+# SOCIAL_AUTH_FACEBOOK_SECRET = os.environ["FACEBOOK_PASS"]  # App Secret
