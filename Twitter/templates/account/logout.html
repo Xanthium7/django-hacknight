@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container custom-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 custom-col">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <h2 class="custom-heading">{% trans "Log Out" %}</h2>
+                    <form class="logout custom-form" id="logout_form" method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        <p>{% trans "Are you sure you want to log out?" %}</p>
+                        <button class="btn custom-button" type="submit">{% trans "Log Out" %} »</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

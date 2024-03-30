@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container custom-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 custom-col">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <h2 class="custom-heading">{% trans "Verify Email" %}</h2>
+                    <form class="email_confirm custom-form" id="email_confirm_form" method="post" action="{% url 'account_confirm_email' key %}">
+                        {% csrf_token %}
+                        <p>{% trans "Please confirm that this is the correct email address:" %} {{ email }}</p>
+                        <button class="btn custom-button" type="submit">{% trans "Confirm Email" %} »</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
