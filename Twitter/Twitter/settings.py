@@ -154,12 +154,12 @@ SIGNUP_REDIRECT_URL = '/profile/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "twitterdjangomail@gmail.com"
-EMAIL_HOST_PASSWORD = "thisisdjangopass"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = "twitterdjangomail@gmail.com"
+# EMAIL_HOST_PASSWORD = "thisisdjangopass"
 # EMAIL_HOST_PASSWORD = os.environ["EMAIL_PASS"]
 
 # print(EMAIL_HOST_PASSWORD)
@@ -168,6 +168,6 @@ SOCIALACCOUNT_PROVIDERS = {}
 # SOCIAL_AUTH_FACEBOOK_KEY = '340286416960937'  # App ID
 # SOCIAL_AUTH_FACEBOOK_KEY = os.environ["FACEBOOK_KEY"]
 # SOCIAL_AUTH_FACEBOOK_SECRET = os.environ["FACEBOOK_PASS"]  # App Secret
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
