@@ -1,9 +1,9 @@
 {% extends "base.html" %} {% block content %}
-<h2 style="margin-top: 50px;" class="center-align">Choose the desired file your Profile Pic</h2>
+<h2 style="margin-top: 50px;" class="center-align text-3xl my-10">Choose the desired file your Profile Pic</h2>
 <div id="p_form_padder" class="container">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {{p_form.as_p}}
-        <button class="btn waves-effect waves-light" type="submit" name="Submit">Change</button>
+        <button class="bg-black p-3 px-4 text-sm mt-5 border-solid border-[1px] border-sky-500" type="submit" name="Submit">Change</button>
     </form>
 </div>
 {% endblock content %}

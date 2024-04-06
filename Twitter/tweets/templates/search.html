@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <div>
-    <h4 style="margin-bottom: 40px;" class="center-align" id="h4-center">Search Results: </h4>
+    <h4 style="margin-bottom: 40px;" class="center-align text-3xl my-20" id="h4-center ">Search Results: </h4>
 </div>
 
 <!-- <div id="search-bar" class="nav-wrapper">
@@ -28,11 +28,11 @@
 
 <div>
     {% if allPosts|length < 1 %}
-    <h5 class="center-align">No Search Results</h5>
-    <h5 class="center-align">Your Search: <b>"{{query}}"</b></h5>
-    <h5 class="center-align">Did not match any results</h5>
+    <h5 class="center-align text-2xl mb-1">No Search Results</h5>
+    <h5 class="center-align text-2xl mb-1">Your Search: <b>"{{query}}"</b></h5>
+    <h5 class="center-align text-2xl mb-1">Did not match any results</h5>
     {% endif %} 
-    <h3 class="center-align"><a href="/" class="btn red center-align">Back</a></h3>
+    <h3 class="center-align mt-2 mb-1"><a href="/" class="btn red center-align">Back</a></h3>
     {% for tweet in allPosts %}
         <div class="row">
             <div id="column-center" class="col s12">

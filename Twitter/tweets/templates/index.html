@@ -27,34 +27,31 @@
             <h6 class="center-align flex justify-center"><img id="profile-img" class="circle responsive-img" src="{{current.profile.image.url}}" alt="" /></h6>
             <h6 class="center-align">Following : {{request.user.followers.count}}</h6>
     
-            <h6 class="center-align">Followers : {{followers2.count}}</h6>
+            <h6 class="center-align mb-5">Followers : {{followers2.count}}</h6>
         </div>
     </a>
 
     <!-- FOLLLOWERS SIDE SECTION -->
-<!-- 
-    <div class="nav-wrapper w-[15vw] min-h-[36vh] mr-20 bg-[#111] text-white rounded-[30px] border-solid border-[1px] border-sky-500 absolute r-0">
+
+    <!-- <div class="nav-wrapper w-[15vw] min-h-[36vh] mt-8 mr-20 bg-[#111] text-white rounded-[30px] border-solid border-[1px] border-sky-500 fixed right-0 overflow-auto">
         <h4 class="center-align scrollspy text-2xl">Your Followers</h4>
-        <ul style="color: black;" class="collection ">
+        <ul class="collection text-black">
             {% for people in followers %}{% if request.user != people%}
-    
-    
-            <li style="padding-bottom: 30px;" class="collection-item avatar">
-    
-                <div><span id="profile-home-img"><img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle"></span>
-                    <h6 style="padding-top: 15px;">{{people.username}}</h6>
+            <li class="collection-item avatar pb-8">
+                <div>
+                    <span id="profile-home-img">
+                        <img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle">
+                    </span>
+                    <h6 class="pt-4">{{people.username}}</h6>
                 </div>
             </li>
             {% else %}
             <p></p>
-    
             {% endif %} {% endfor %}
-            <p></p>
-            <div style="display: flex; " class="text-white flex border-none w-full  ">
-            <a style="margin-left: 100px;" class="bg-red-500 p-3  " href="/follower_list/">View More <i class="fas fa-long-arrow-alt-right"></i></a>
+            <div class="text-white flex border-none w-full justify-center">
+                <a class="bg-red-500 p-3 ml-24" href="/follower_list/">View More <i class="fas fa-long-arrow-alt-right"></i></a>
             </div>
         </ul>
-    
     </div> -->
 
 

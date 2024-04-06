@@ -1,19 +1,19 @@
 {% extends 'base.html' %} {% block content %}
-<h2 class="center-align">{{query}} </h2>
+<h2 class="center-align text-2xl my-5 mb-20">{{query}} </h2>
 <div class="container">
     {% for people in allPosts %}
 
-    <ul style="color: black; border: none;" class="collection">
-        <li class="collection-item avatar something">
+    <ul style="color: black; border: none;" class="collection rounded-[30px] ">
+        <li class="collection-item avatar something ">
             <img src="{{people.profile.image.url}}" alt="" class="circle">
-            <span class="title">{{people.username}}</span>
+            <span class="text-xl">{{people.username}}</span>
             <!-- <a href="#!" class="secondary-content"></a> -->
             <form action="/follow/{{people.id}}" method="POST">
                 {% csrf_token %} {% if request.user in people.profile.followers.all %}
 
 
-
-                <button type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right red">
+                
+                <button type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small  waves-effect waves-light right red">
                             UnFollow
                         </button> {% else %}
                 <button type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right blue">

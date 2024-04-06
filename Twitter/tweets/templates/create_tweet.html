@@ -1,9 +1,9 @@
 {% extends "base.html" %} {% block content %}
 
 
-<h2 class="center-align">Create Your Tweet here</h2>
+<h2 class="center-align text-3xl my-10">Create Your Tweet here</h2>
 
-<div class="container">
+<div class="container bg-[#111] p-5 px-20 pb-16 rounded-[30px] border-solid border-2 border-sky-500">
     <form style="color: white;" method="POST" action="">
         <!-- <table> -->
         {% csrf_token %}
@@ -24,7 +24,7 @@
         <!-- <input type="text" name="content" placeholder="Content"> -->
         <!-- <input type="text" name="image_url" placeholder="Image link"> -->
         <div style="margin-bottom: 10px;">please provide a real image link ^</div>
-        <button class="btn waves-effect waves-light blue" type="submit" name="Submit">Submit<i class="material-icons right">send</i></button>
+        <button class="bg-black p-3 border-solid border-[1px] border-sky-500 rounded-[10px]" type="submit" name="Submit">Submit<i class="material-icons right">send</i></button>
         <!-- </table> -->
     </form>
 </div>

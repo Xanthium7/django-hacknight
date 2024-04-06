@@ -1,15 +1,15 @@
 {% extends "base.html" %} {% block content %}
-<div class="yayayaya">
-    <h2 style="margin-bottom: 20px;" class="center-align">{{tweet.title}}</h2>
+<div class="yayayaya ">
+    <h2 style="margin-bottom: 20px;" class="center-align text-5xl mt-5">{{tweet.title}}</h2>
     <div class="tweet-detail-img">
         <img class="materialboxed " style="border: 3px solid black;" src="{{tweet.image_url}}" alt="" srcset="">
     </div>
-    <div class="tweet-detail-text">
+    <div class="tweet-detail-text text-2xl">
         <p>
             {{tweet.content}}
         </p>
     </div>
-    <div class="like-unlike">
+    <div class=" bg-red-500">
         <form action="{% url 'dislike_post' tweet.pk %}" method="post">
             {% csrf_token %}
 
@@ -36,7 +36,7 @@
     </div>
 
 
-    <h2 class="center-align comments-title">
+    <h2 class="center-align comments-title text-2xl mt-20">
         Comments
     </h2>
     <div class="comment">
