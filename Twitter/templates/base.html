@@ -15,6 +15,7 @@
     <!--Let browser know website is optimized for mobile-->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://cdn.tailwindcss.com/3.4.3/tailwind.min.css" rel="stylesheet">
     <title>{% block head_title %}{% endblock %}</title>
     {% block extra_head %} {% endblock %}
     <style>
@@ -35,7 +36,7 @@
         }
         
         body {
-            background-color: rgb(28, 28, 28);
+            background-color: rgb(22, 22, 22);
             color: white;
         }
         
@@ -44,8 +45,8 @@
         }
         
         #hover :hover {
-            background-color: rgb(78, 174, 253);
-            color: black;
+            background-color: rgb(44, 44, 44);
+            color: rgb(214, 214, 214);
         }
         
         #hover1:hover {
@@ -700,36 +701,6 @@
 </head>
 
 <body>
-    <!-- <div style="height: 200vh; width: 200vh; font-size: 16px;" class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-                <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-                <div class="circle"></div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div> -->
-    <!-- <div style="height: 100vh; z-index: 100000;" class="wavy">
-        <span style="--i:1;">L</span>
-        <span style="--i:2;">o</span>
-        <span style="--i:3;">a</span>
-        <span style="--i:4;">d</span>
-        <span style="--i:5;">i</span>
-        <span style="--i:6;">n</span>
-        <span style="--i:7;">g</span>
-        <span style="--i:8;">.</span>
-        <span style="--i:9;">.</span>
-        <span style="--i:10;">.</span>
-    </div> -->
 
     <div class="navbar-fixed">
         <nav>
@@ -739,35 +710,36 @@
                                 class="fab fa-twitter"></i></span>Twitter</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-                    <ul class="right hide-on-med-and-down">
+                    <ul class="right hide-on-med-and-down flex gap-4 mr-5">
                         <li id="hover">
-                            <a id="blue-text" href="/"><i class="fas fa-home"></i> Home</a>
+                            <a id="" href="/" data-position="bottom" data-tooltip="Create Tweet"><i class="fas fa-home"></i> </a>
+                        </li>
+                        <li id="hover" class="hover:bg-blue ">
+                            <a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> </a>
+                        </li>
+                        <li id="hover">
+                            <a href="/about"> <i class="fa-solid fa-circle-info"></i></a>
                         </li>
                         {% if user.is_authenticated %}
                         <li id="hover">
-                            <a id="red-text" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Sign
-                                Out</a>
+                            <a href="{% url 'account_email' %}"><i class="fas fa-exchange-alt"></i></a>
                         </li>
                         <li id="hover">
-                            <a href="{% url 'account_email' %}"><i class="fas fa-exchange-alt"></i> Change E-mail</a>
+                            <a id="red-text" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> </a>
                         </li>
+                        
 
                         {% else %}
                         <li id="hover">
                             <a href="{% url 'account_login' %}"> Login</a>
                         </li>
-                        <li id="hover">
+                        <li id="hover" >
                             <a id="green-text" href="{% url 'account_signup' %}"> Sign
                                 Up</a>
                         </li>
                         {% endif %}
 
-                        <li id="hover">
-                            <a href="{% url 'profile' %}"> Profile</a>
-                        </li>
-                        <li id="hover2">
-                            <a href="/about"> About Us</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -817,6 +789,8 @@
     </div>
     {% block content %} {% endblock %} {% endblock %} {% block extra_body %} {% endblock %}
 
+    
+    <script src="https://kit.fontawesome.com/4e7a1dfd14.js" crossorigin="anonymous"></script>
     <script>
         setTimeout(function() {
             $(".wavy ").fadeToggle();

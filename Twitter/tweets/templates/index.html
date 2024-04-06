@@ -1,62 +1,61 @@
 {% extends 'base.html' %} {% block content %}
 
 <div>
-    <h4 style="margin-bottom: 40px;" class="center-align" id="h4-center">Tweets</h4>
+    <h4 style="margin-bottom: 40px;" class="center-align text-3xl mt-5" id="h4-center">Tweets</h4>
 </div>
 
-<div style="color: white;" id="search-bar" class="nav-wrapper">
-    <form action="/search" method="GET">
-        <div class="input-field">
-            <input style="background-color: #111;" name="query" id="query" placeholder="Search Tweets..." type="search" required>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
+<div class="flex w-full justify-center">
 
-        </div>
-        <!-- <button class="btn waves-effect waves-light right blue"></button> -->
-    </form>
-</div>
-
-<a id="thing" class="nav-wrapper" style="color:aliceblue;" href="/profile/">
-    <div class="user-container">
-        <h4 class="center-align scrollspy">{{current.username}}</h4>
-        <h6 class="center-align"><img id="profile-img" class="circle responsive-img" src="{{current.profile.image.url}}" alt="" /></h6>
-        <h6 class="center-align">Following : {{request.user.followers.count}}</h6>
-
-        <h6 class="center-align">Followers : {{followers2.count}}</h6>
-    </div>
-</a>
-
-<div class="follower-container">
-    <h4 class="center-align scrollspy">Your Followers</h4>
-    <ul style="color: black;" class="collection">
-        {% for people in followers %}{% if request.user != people%}
-
-
-        <li style="padding-bottom: 30px;" class="collection-item avatar">
-
-            <div><span id="profile-home-img"><img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle"></span>
-                <h6 style="padding-top: 15px;">{{people.username}}</h6>
-                <!-- <form action="/followhome/{{people.id}}" method="POST">
-                    {% csrf_token %}
-                    <button style="margin-top: 20px;" id="follower-btn" type="submit" name="{{people.id}}" value="{{people.id}}" class="btn btn-small waves-effect waves-light right blue">
-                            Follow
-                        </button>
-                </form> -->
+    <div style="color: white;" id="" class="nav-wrapper bg-[#111]  w-[20vw] p-3 rounded-full flex justify-center">
+        <form class="w-full" action="/search" method="GET">
+            <div class="input-field  w-full  ">
+                <input class="w-full rounded-full " style="background-color: #111;" name="query" id="query" placeholder="Search Tweets..." type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+    
             </div>
-        </li>
-        {% else %}
-        <p></p>
+            <!-- <button class="btn waves-effect waves-light right blue"></button> -->
+        </form>
+    </div>
+</div>
 
-        {% endif %} {% endfor %}
-        <p></p>
-        <span style="display: flex;">
-        <a style="margin-left: 100px;" class="" href="/follower_list/">View More <i class="fas fa-long-arrow-alt-right"></i></a>
-        </span>
-    </ul>
+<div class="flex w-full bg-red-500 text-white">
 
+    <a id="thing" class="nav-wrapper" style="color:aliceblue;" href="/profile/">
+        <div class="user-container flex flex-col gap-5">
+            <h4 class="center-align scrollspy mt-3 text-2xl">{{current.username}}</h4>
+            <h6 class="center-align flex justify-center"><img id="profile-img" class="circle responsive-img" src="{{current.profile.image.url}}" alt="" /></h6>
+            <h6 class="center-align">Following : {{request.user.followers.count}}</h6>
+    
+            <h6 class="center-align">Followers : {{followers2.count}}</h6>
+        </div>
+    </a>
 
-
-    <!-- <a href=""><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt=""></a> -->
+    <!-- FOLLLOWERS SIDE SECTION -->
+<!-- 
+    <div class="nav-wrapper w-[15vw] min-h-[36vh] mr-20 bg-[#111] text-white rounded-[30px] border-solid border-[1px] border-sky-500 absolute r-0">
+        <h4 class="center-align scrollspy text-2xl">Your Followers</h4>
+        <ul style="color: black;" class="collection ">
+            {% for people in followers %}{% if request.user != people%}
+    
+    
+            <li style="padding-bottom: 30px;" class="collection-item avatar">
+    
+                <div><span id="profile-home-img"><img id="list-img" src="{{people.profile.image.url}}" alt="" class="circle"></span>
+                    <h6 style="padding-top: 15px;">{{people.username}}</h6>
+                </div>
+            </li>
+            {% else %}
+            <p></p>
+    
+            {% endif %} {% endfor %}
+            <p></p>
+            <div style="display: flex; " class="text-white flex border-none w-full  ">
+            <a style="margin-left: 100px;" class="bg-red-500 p-3  " href="/follower_list/">View More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+        </ul>
+    
+    </div> -->
 
 
 
@@ -69,7 +68,7 @@
 
 
 
-    <div class="row">
+    <div class="row mt-20 mb-10">
         <div id="column-center" class="col s12">
             <div id="card" class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -105,11 +104,11 @@
             </button>
                     </form> -->
                     <p style="padding-bottom: 10px;" class="grey-text">{{tweet.time}}</p>
-                    <p class="grey-text">By: <span class="grey-text">{{tweet.user}}</span> <span class="white-text">....</span> </span><span><a id="halhalo" style="margin-left: 10px;" class="btn right-align blue" href="/tweet_detail/{{tweet.id}}">View More  </a></span>
+                    <p class="grey-text">By: <span class="grey-text">{{tweet.user}}</span> <span class="white-text">....</span> </span><span><a id="halhalo" style="margin-left: 10px;" class="btn right-align bg-blue-400" href="/tweet_detail/{{tweet.id}}">View More  </a></span>
 
                         <span style="color: white;">............................ </span> {% if request.user == tweet.user %}
                         <span>
-                        <a style="color: red;" href="/delete_tweet/{{tweet.id}}"><i style="padding-left: 20px; font-size: 20px;" class="fas fa-trash"></i></a>
+                        <a style="color: rgb(221, 61, 61);" href="/delete_tweet/{{tweet.id}}"><i style="padding-left: 20px; font-size: 20px;" class="fas fa-trash"></i></a>
                         <a href="/update_tweet/{{tweet.id}}"><i style="padding-left: 20px; font-size: 20px;" class="fas fa-edit"></i></a>
                         </span> {% endif %}
                         <!-- <a style="color: black;" class='dropdown-trigger' data-target='dropdown1'><i style="font-size: 20px;" class="fas fa-ellipsis-v"></i></a> 
